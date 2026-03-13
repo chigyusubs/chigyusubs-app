@@ -42,6 +42,22 @@ import { GlobeIcon, MicIcon, MoonIcon, SunIcon } from "./components/icons/Icons"
 import { MockModeIndicator } from "./components/MockModeIndicator";
 // ============================================================================
 
+function getGithubRepositoryUrl(): string | null {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  const { hostname, pathname } = window.location;
+  if (!hostname.endsWith(".github.io")) {
+    return null;
+  }
+
+  const owner = hostname.slice(0, -".github.io".length);
+  const [repoSegment] = pathname.replace(/^\/+|\/+$/g, "").split("/");
+  const repo = repoSegment || `${owner}.github.io`;
+  return `https://github.com/${owner}/${repo}`;
+}
+
 function App() {
   const { state, actions } = useTranslationWorkflowRunner();
   const theme = useTheme();
@@ -167,6 +183,9 @@ function App() {
 
   const statusText = getStatusText();
 
+  const mascotUrl = `${import.meta.env.BASE_URL}gyudon.png`;
+  const githubRepositoryUrl = getGithubRepositoryUrl();
+
   return (
     <div className={theme.page}>
       {/* Mock mode indicator - DELETE THIS LINE to remove mock mode UI */}
@@ -176,7 +195,7 @@ function App() {
         <div className="max-w-5xl mx-auto flex items-center justify-between px-6">
           <div className="flex items-center gap-4">
             <img
-              src="/gyudon.png"
+              src={mascotUrl}
               alt="Gyudon mascot"
               className="w-12 h-12 animate-float pixelated"
             />
@@ -1211,15 +1230,20 @@ function App() {
           ChigyuSubs runs entirely in your browser: no accounts, no server, and no key storage.
           {" "}
           Your subtitles and media are sent only to the AI providers you configure (Google,
-          OpenAI, etc.), under their data policies. ·{" "}
-          <a
-            href="https://github.com/chigyusubs/chigyusubs.github.io"
-            className="underline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
+          OpenAI, etc.), under their data policies.
+          {githubRepositoryUrl ? (
+            <>
+              {" "}·{" "}
+              <a
+                href={githubRepositoryUrl}
+                className="underline"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
+            </>
+          ) : null}
         </p>
       </footer>
     </div>

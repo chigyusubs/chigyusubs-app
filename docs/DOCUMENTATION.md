@@ -72,8 +72,8 @@ Historical documents (completed migrations, old plans):
 
 - 🏠 [Project README](../README.md) - Main project page
 - 🎯 [MISSION.md](./MISSION.md) - Why this project exists
-- 🚀 [Live App](https://chigyusubs.github.io) - Try it now
-- 🐛 [GitHub Issues](https://github.com/chigyusubs/chigyusubs/issues) - Report bugs or request features
+- 🚀 [Live App](https://chigyusubs.github.io/chigyusubs-app/) - Try it now
+- 🐛 [GitHub Issues](https://github.com/chigyusubs/chigyusubs-app/issues) - Report bugs or request features
 
 ---
 

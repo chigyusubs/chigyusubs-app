@@ -2,7 +2,7 @@
 
 Browser-only subtitle tool with **transcription-first** workflow. Uses the Gemini File API in structured mode to transcribe media, then lets you translate any VTT (from our transcription or Whisper/other tools) via a structured JSON pipeline and rebuild VTT. Everything runs client-side with your API key.
 
-Live app: https://chigyusubs.github.io (built from `main` via GitHub Actions)
+Live app: https://chigyusubs.github.io/chigyusubs-app/ (built from `main` via GitHub Actions; the deploy workflow auto-detects the project-page base path).
 
 ## Key Features
 
